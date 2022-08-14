@@ -43,6 +43,7 @@ Projeto desenvolvido no treinamento **Startto.dev** oferecido pelo professor Dan
 - [x] shimmer
 - [x] Git
 - [x] Github
+- [x] GetX
 
 ---
 
