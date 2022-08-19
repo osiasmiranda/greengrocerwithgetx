@@ -5,6 +5,7 @@ import 'package:greengrocer/src/config/custom_colors.dart';
 import '../../routes/app_pages.dart';
 import '../widgets/common/app_name_widget.dart';
 import '../widgets/common/custom_text_field.dart';
+import 'controller/auth_controller.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({Key? key}) : super(key: key);
@@ -110,29 +111,43 @@ class SignInScreen extends StatelessWidget {
                       ),
                       SizedBox(
                         height: 50,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
-                            ),
-                          ),
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              String email = emailController.text;
-                              String password = passwordController.text;
-                              print('Email: $email - senha: $password');
-                            } else {
-                              print('Campos não váldidos');
-                            }
+                        child: GetX<AuthController>(
+                          builder: (authController) {
+                            return ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18),
+                                ),
+                              ),
+                              onPressed: authController.isLoading.value
+                                  ? null
+                                  : () {
+                                      FocusScope.of(context).unfocus();
+                                      if (_formKey.currentState!.validate()) {
+                                        String email = emailController.text;
+                                        String password =
+                                            passwordController.text;
 
-                            // Get.offNamed(Routes.base);
+                                        authController.signIn(
+                                          email: email,
+                                          password: password,
+                                        );
+                                      } else {
+                                        print('Campos não váldidos');
+                                      }
+
+                                      // Get.offNamed(Routes.base);
+                                    },
+                              child: authController.isLoading.value
+                                  ? const CircularProgressIndicator()
+                                  : const Text(
+                                      'Entrar',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                            );
                           },
-                          child: const Text(
-                            'Entrar',
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
                         ),
                       ),
                       Align(
