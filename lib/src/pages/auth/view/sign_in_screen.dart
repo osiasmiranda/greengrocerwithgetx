@@ -2,10 +2,10 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
-import '../../routes/app_pages.dart';
-import '../widgets/common/app_name_widget.dart';
-import '../widgets/common/custom_text_field.dart';
-import 'controller/auth_controller.dart';
+import '../../../routes/app_pages.dart';
+import '../../widgets/common/app_name_widget.dart';
+import '../../widgets/common/custom_text_field.dart';
+import '../controller/auth_controller.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import '../pages/auth/sign_in_screen.dart';
-import '../pages/auth/sign_up_screen.dart';
+import '../pages/auth/view/sign_in_screen.dart';
+import '../pages/auth/view/sign_up_screen.dart';
 import '../pages/base/base_screen.dart';
 import '../pages/splash/splash_screen.dart';
 part './routes.dart';
