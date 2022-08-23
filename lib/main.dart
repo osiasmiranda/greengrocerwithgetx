@@ -4,6 +4,7 @@ import 'src/pages/auth/controller/auth_controller.dart';
 import 'src/routes/app_pages.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   Get.put(AuthController());
   runApp(const MyApp());
 }
