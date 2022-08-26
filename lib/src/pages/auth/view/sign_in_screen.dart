@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
 import '../../../routes/app_pages.dart';
+import '../../../services/validators.dart';
 import '../../widgets/common/app_name_widget.dart';
 import '../../widgets/common/custom_text_field.dart';
 import '../controller/auth_controller.dart';
@@ -83,16 +84,7 @@ class SignInScreen extends StatelessWidget {
                         controller: emailController,
                         icon: Icons.email,
                         label: 'E-mail',
-                        validator: (email) {
-                          if (email == null || email.isEmpty) {
-                            return 'Digite seu e-mail';
-                          }
-
-                          if (!email.isEmail) {
-                            return "Digite um e-mail válido - exemplo@exemplo.com";
-                          }
-                          return null;
-                        },
+                        validator: emailValidator,
                       ),
 
                       //@ password
@@ -101,15 +93,7 @@ class SignInScreen extends StatelessWidget {
                         icon: Icons.lock,
                         label: 'Password',
                         isSecret: true,
-                        validator: (password) {
-                          if (password == null || password.isEmpty) {
-                            return 'Digite sua senha';
-                          }
-                          if (password.length < 7) {
-                            return 'Digite uma senha com 7 caracteres';
-                          }
-                          return null;
-                        },
+                        validator: passwordValidator,
                       ),
                       SizedBox(
                         height: 50,
