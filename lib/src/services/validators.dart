@@ -38,7 +38,7 @@ String? phoneValidator(String? phone) {
     return 'Digite número de Celular';
   }
 
-  if (!phone.isPhoneNumber) {
+  if (!phone.isPhoneNumber || phone.length < 14) {
     return 'Digite um número válido';
   }
   return null;
